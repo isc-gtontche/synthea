@@ -141,7 +141,7 @@ public class Generator {
     this.options = o;
     this.random = new Random(o.seed);
     this.timestep = Long.parseLong(Config.get("generate.timestep"));
-    this.stop = System.currentTimeMillis()+126227704000; //four years in the future
+    this.stop = System.currentTimeMillis()+126227704000L; //four years in the future
 
     this.location = new Location(o.state, o.city);
 
