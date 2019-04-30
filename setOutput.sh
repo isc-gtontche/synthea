@@ -7,4 +7,4 @@ if [ ! $# -eq 0 ]
     exit
 fi
 syntheaProperties='./src/main/resources/synthea.properties'
-sed -i "s,exporter.baseDirectory = ./output/,exporter.baseDirectory = $syntheaOutput,g" $syntheaProperties
+sed -i "s,^exporter.baseDirectory =.*$,exporter.baseDirectory = $syntheaOutput,g" $syntheaProperties
