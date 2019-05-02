@@ -68,6 +68,13 @@ public abstract class Exporter {
       } catch (IOException e) {
         e.printStackTrace();
       }
+      try{
+            Process proc = null;
+            proc = Runtime.getRuntime().exec("sh /home/synthea/storeCCDA.sh");
+            proc = Runtime.getRuntime().exec("rm -f "+outFilePath);
+         } catch (IOException e) {
+                 e.printStackTrace();
+         }
     }
     if (Boolean.parseBoolean(Config.get("exporter.csv.export"))) {
       try {
