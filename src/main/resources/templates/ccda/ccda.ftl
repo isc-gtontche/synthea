@@ -13,7 +13,9 @@
   <languageCode code="en-US"/>
   <recordTarget>
     <patientRole>
-      <id root="2.16.840.1.113883.19.5" extension="${id}" assigningAuthorityName="https://github.com/synthetichealth/synthea"/>
+        <id root="2.16.840.1.113883.19.5" extension="${id}" assigningAuthorityName="https://github.com/synthetichealth/synthea"/>
+        <id root="2.16.840.1.113883.3.135.1" extension="${seed}" assigningAuthorityName="https://github.com/synthetichealth/synthea"/>
+        <id root="2.16.840.1.113883.3.135.2" extension="${population_seed}" assigningAuthorityName="https://github.com/synthetichealth/synthea"/>
       <addr use="HP">
         <streetAddressLine>${address}</streetAddressLine>
         <city>${city}</city>
