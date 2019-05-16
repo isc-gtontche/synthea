@@ -70,16 +70,12 @@ public abstract class Exporter {
       }
       try{
             Process proc = null;
-            proc = Runtime.getRuntime().exec("sh /home/synthea/storeCCDA.sh");
+            String filename = filename(person, "xml");
+            proc = Runtime.getRuntime().exec("sh /home/synthea/storeCCDA.sh " + filename);
             proc.waitFor();
-            proc = Runtime.getRuntime().exec("rm -f "+outFilePath);
-            proc.waitFor();
-         } catch (IOException e) {
-                 e.printStackTrace();
-         }
-           catch (InterruptedException e) {
-                 e.printStackTrace();
-         }
+      } catch (IOException e) {
+            e.printStackTrace();
+      }
 
        }
     if (Boolean.parseBoolean(Config.get("exporter.csv.export"))) {
