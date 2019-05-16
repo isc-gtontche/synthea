@@ -2,41 +2,23 @@
 outputDir=/home/synthea/output
 ccdaDir=$outputDir/ccda/
 sdaDir=$outputDir/sdarepo/
-splitDir=$sdaDir/split
+filename=$1
 
 if [ ! -d $ccdaDir ]; then
    sudo mkdir -p $ccdaDir
 fi
+
 if [ ! -d $sdaDir ]; then
    sudo mkdir -p $sdaDir
 fi
-if [ ! -d $splitDir ]; then
-   sudo mkdir -p $sdaDir/split
-fi
-
-
-echo $sdaDir
-echo $ccdaDir
 
 ccontrol session STRESS <<- EOS
 _system
 SYS
-zn "HSLIB" zw ##class(Synthea.CCDAtoSDAConverter).ConvertCCDA("$ccdaDir","$sdaDir") 
+zn "HSLIB" zw ##class(Synthea.CCDAtoSDAConverter).ConvertCCDA("$ccdaDir","$sdaDir","$filename") 
 EOS
 
-for f in $ccdaDir/*.xml
-	do 
-		sudo rm "$f"
-	done
-        
-for f in $sdaDir/*.xml
-	do 
-		sudo rm "$f"
-	done
+sudo rm -f $ccdaDir/$filename
+sudo rm -f $sdaDir/$filename
 
-for f in $splitDir/*.xml
-	do 
-		sudo rm "$f"
-	done
-echo "HELLO FROM INSIDE HELL" >> ./Kuleet.txt
 done
